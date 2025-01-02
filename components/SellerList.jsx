@@ -1,3 +1,4 @@
+"use client";
 import $axios from "@/lib/axios.instance";
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
