@@ -3,6 +3,7 @@ import $axios from "@/lib/axios.instance";
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { CircularProgress, Pagination } from "@mui/material";
+import { isSeller } from "@/utils/check.role";
 
 const SellerList = () => {
   const [productList, setProductList] = useState([]);
@@ -24,7 +25,8 @@ const SellerList = () => {
         setIsPending(false);
       }
     };
-    getSellerProduct();
+
+    isSeller() && getSellerProduct();
   }, [page]);
   if (isPending) {
     return <CircularProgress />;

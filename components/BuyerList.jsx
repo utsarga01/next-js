@@ -4,6 +4,7 @@ import { CircularProgress, Pagination } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import ProductCard from "./ProductCard";
+import { isBuyer } from "@/utils/check.role";
 
 const BuyerList = () => {
   const { data, isPending, error } = useQuery({
@@ -17,6 +18,7 @@ const BuyerList = () => {
     onError: (error) => {
       console.log(error);
     },
+    enabled:isBuyer(),
   });
   const productList = data?.data?.productList;
   if (isPending) {
